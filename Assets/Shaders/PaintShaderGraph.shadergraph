@@ -2545,10 +2545,10 @@
     "m_Guid": {
         "m_GuidSerialized": "2298f273-31d2-4fd5-84e4-949e6206272c"
     },
-    "m_Name": "StrokeBlendingNoiseMode",
+    "m_Name": "StrokeNoiseSamplingMode",
     "m_DefaultRefNameVersion": 1,
-    "m_RefNameGeneratedByDisplayName": "StrokeBlendingNoiseMode",
-    "m_DefaultReferenceName": "_STROKEBLENDINGNOISEMODE",
+    "m_RefNameGeneratedByDisplayName": "StrokeNoiseSamplingMode",
+    "m_DefaultReferenceName": "_STROKENOISESAMPLINGMODE",
     "m_OverrideReferenceName": "",
     "m_GeneratePropertyBlock": true,
     "m_UseCustomSlotLabel": false,
@@ -3161,7 +3161,7 @@
     "m_Group": {
         "m_Id": "100264e9f74d4560a746415e8d2fed4d"
     },
-    "m_Name": "StrokeBlendingNoiseMode",
+    "m_Name": "StrokeNoiseSamplingMode",
     "m_DrawState": {
         "m_Expanded": true,
         "m_Position": {
@@ -6426,7 +6426,7 @@
     "m_ObjectId": "c4e43da242cd402b995dc80dd4599774",
     "m_Title": "Color Construction",
     "m_Position": {
-        "x": -1136.0003662109375,
+        "x": -1136.0001220703125,
         "y": -408.0000305175781
     }
 }
@@ -6864,8 +6864,8 @@
     "m_ObjectId": "db5ab21b734a4493a1d0e0a67bd9cbfc",
     "m_Title": "Voronoi Generator",
     "m_Position": {
-        "x": -2502.000244140625,
-        "y": 216.0000457763672
+        "x": -2502.0,
+        "y": 216.00003051757813
     }
 }
 
