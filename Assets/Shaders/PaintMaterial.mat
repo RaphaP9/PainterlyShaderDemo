@@ -11,7 +11,8 @@ Material:
   m_Shader: {fileID: -6465566751694194690, guid: e00bb7b4f4165f745a0fb58148966307, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
-  m_ValidKeywords: []
+  m_ValidKeywords:
+  - _STROKEBLENDINGNOISEMODE_UVS
   m_InvalidKeywords:
   - _REFFERENCEVECTORTYPE_NORMALOS
   m_LightmapFlags: 4
@@ -150,6 +151,7 @@ Material:
     - _QueueOffset: 0
     - _REFFERENCEVECTORTYPE: 0
     - _ReceiveShadows: 1
+    - _STROKEBLENDINGNOISEMODE: 0
     - _Smoothness: 0.4
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
