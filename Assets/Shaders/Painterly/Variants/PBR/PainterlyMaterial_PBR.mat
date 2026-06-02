@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: PaintMaterial
+  m_Name: PainterlyMaterial_PBR
   m_Shader: {fileID: -6465566751694194690, guid: e00bb7b4f4165f745a0fb58148966307, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0

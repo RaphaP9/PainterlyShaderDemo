@@ -1644,8 +1644,8 @@
     "m_ObjectId": "100264e9f74d4560a746415e8d2fed4d",
     "m_Title": "Stroke Noise",
     "m_Position": {
-        "x": -5076.00048828125,
-        "y": 167.00001525878907
+        "x": -5076.0,
+        "y": 167.0
     }
 }
 
@@ -3862,7 +3862,7 @@
     "m_RenderFace": 2,
     "m_AlphaClip": false,
     "m_CastShadows": true,
-    "m_ReceiveShadows": false,
+    "m_ReceiveShadows": true,
     "m_DisableTint": false,
     "m_AdditionalMotionVectorMode": 0,
     "m_AlembicMotionVectors": false,
@@ -6426,8 +6426,8 @@
     "m_ObjectId": "c4e43da242cd402b995dc80dd4599774",
     "m_Title": "Color Construction",
     "m_Position": {
-        "x": -1136.0001220703125,
-        "y": -408.0000305175781
+        "x": -1136.0,
+        "y": -408.0
     }
 }
 
@@ -6865,7 +6865,7 @@
     "m_Title": "Voronoi Generator",
     "m_Position": {
         "x": -2502.0,
-        "y": 216.00003051757813
+        "y": 216.0
     }
 }
 
