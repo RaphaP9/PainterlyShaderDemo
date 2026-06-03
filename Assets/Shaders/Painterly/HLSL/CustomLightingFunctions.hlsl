@@ -14,14 +14,14 @@ struct SurfaceVariables
     float3 normal;
     float3 view;
     float3 surfaceColor;
-    float specularIntensity;
     float shininess;
-    float metallic;
+    float specularIntensity;
+    float specularMetallicness;
 };
 
-float CalculateDiffuseLighting(Light light, float3 normal, float minimumDiffuseLighting)
+float CalculateDiffuseLighting(Light light, float3 normal, float diffuseLightingOffset, float minimumDiffuseLighting)
 {
-    float diffuse = saturate(dot(normal, light.direction));
+    float diffuse = saturate(dot(normal, light.direction) + diffuseLightingOffset);
     float attenuation = light.distanceAttenuation * light.shadowAttenuation;
     
     diffuse *= attenuation;
@@ -41,15 +41,18 @@ float CalculateSpecularLighting(Light light, float3 normal, float3 viewDirection
     return specular;
 }
 
-float3 CalculateCustomLightingColor(Light light, SurfaceVariables s, float minimumDiffuseLighting)
+float3 CalculateCustomLightingColor(Light light, SurfaceVariables s, float diffuseLightingOffset, float minimumDiffuseLighting)
 {
-    float diffuse = CalculateDiffuseLighting(light, s.normal, minimumDiffuseLighting);
+    float diffuse = CalculateDiffuseLighting(light, s.normal, diffuseLightingOffset, minimumDiffuseLighting);
     
-    float realDiffuse = CalculateDiffuseLighting(light, s.normal, 0);
+    float realDiffuse = CalculateDiffuseLighting(light, s.normal, diffuseLightingOffset, 0);
     float specular = CalculateSpecularLighting(light, s.normal, s.view, s.specularIntensity, s.shininess, realDiffuse);
     
     float3 diffuseColor = diffuse * light.color * s.surfaceColor;
-    float3 specularColor = lerp(float3(1,1,1), s.surfaceColor, s.metallic) * specular * light.color;
+    
+    //When an object is non metallic, specular lighting color will be 100% the light color
+    //When an object is fully metallic, specular lighting color is a blending between the light color and the surface color
+    float3 specularColor = lerp(float3(1, 1, 1), s.surfaceColor, s.specularMetallicness) * specular * light.color;
     
     float3 completeColor = diffuseColor + specularColor;
     
@@ -62,10 +65,11 @@ void GetCustomLightingColor_float(
     float3 Normal,
     float3 ViewDirection,
     float3 SurfaceColor,
-    float SpecularIntensity,
-    float Shininess,
-    float Metallic,
+    float DiffuseLightingOffset,
     float MinimumDiffuseMainLighting,
+    float Shininess,
+    float SpecularIntensity,
+    float SpecularMetallicness,
     out float3 Color
 )
 {
@@ -76,9 +80,9 @@ void GetCustomLightingColor_float(
     s.normal = Normal;
     s.view = ViewDirection;
     s.surfaceColor = SurfaceColor;
-    s.specularIntensity = SpecularIntensity;
     s.shininess = Shininess;
-    s.metallic = Metallic;
+    s.specularIntensity = SpecularIntensity;
+    s.specularMetallicness = SpecularMetallicness;
     
     Color = float3(0.0, 0.0, 0.0);
     
@@ -95,7 +99,7 @@ void GetCustomLightingColor_float(
             Light mainLight = GetMainLight();
         #endif
         
-        Color += CalculateCustomLightingColor(mainLight, s, MinimumDiffuseMainLighting);
+        Color += CalculateCustomLightingColor(mainLight, s, DiffuseLightingOffset, MinimumDiffuseMainLighting);
         
 #endif
     
@@ -113,7 +117,7 @@ void GetCustomLightingColor_float(
                 additionalLight = GetAdditionalLight(i, Position);
             #endif
 
-            Color += CalculateCustomLightingColor(additionalLight, s, 0); 
+            Color += CalculateCustomLightingColor(additionalLight, s, 0, 0); 
         }
 
 #endif
