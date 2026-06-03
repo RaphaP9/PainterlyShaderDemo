@@ -157,11 +157,11 @@ Material:
     - _ReceiveShadows: 1
     - _STROKEBLENDINGNOISEMODE: 0
     - _STROKENOISESAMPLINGMODE: 1
-    - _Shininess: 8
+    - _Shininess: 7
     - _Smoothness: 0.4
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
-    - _SpecularIntensity: 3
+    - _SpecularIntensity: 2
     - _SrcBlend: 1
     - _SrcBlendAlpha: 1
     - _StrokeBlendingNoiseScale: 10
